@@ -21,6 +21,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "citizen.h"
 #include "admin.h"
 using namespace std;
@@ -134,7 +135,12 @@ void registration()
 
 	Citizen *new_citizen = new Citizen(name, id, sex, age, comorbidities, pswd); // Creating citizen node
 	cqueue.enqueue(new_citizen);
+	ofstream myfile;
+    myfile.open("test.csv",ofstream::app);
+	myfile << id << "," << name<<","<<age<<","<<sex<<","<<comorbidities << endl;
+	myfile.close();
 	cout << "\n\t\tRegistered successfully, please log in to see your details." << endl;
+
 }
 
 // ==============================================================================================
